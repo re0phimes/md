@@ -221,18 +221,48 @@ function initEditor() {
   editor.value.on(`change`, (e) => {
     clearTimeout(changeTimer.value)
     changeTimer.value = setTimeout(() => {
-      // 获取当前编辑器内容
+      // 获取内容、光标、当前行
       const content = e.getValue()
-      // 检查是否包含 admonition 语法
-      if (content.includes('```ad-')) {
-        // 转换 admonition 语法
-        const convertedContent = convertAdmonitionToGFM(content)
-        // 如果内容有变化，则更新编辑器
-        if (convertedContent !== content) {
-          e.setValue(convertedContent)
-          return // 因为 setValue 会再次触发 change 事件，所以这里直接返回
+      const cursor = e.getCursor()
+      const line = e.getLine(cursor.line) 
+      
+      // 如果当前行包含 ```ad- 开头
+      if (line.trim().startsWith('```ad-')) {
+        let endLine = cursor.line + 1
+        while (endLine < e.lineCount()) {
+          if (e.getLine(endLine).trim() === '```') {
+            break
+          }
+          endLine++
+        }
+        
+        // 如果找到了完整的 admonition 块
+        if (endLine < e.lineCount()) {
+          const blockContent = e.getRange(
+            { line: cursor.line, ch: 0 },
+            { line: endLine + 1, ch: 0 }
+          )
+          
+          // 调用转换函数
+          const convertedContent = convertAdmonitionToGFM(blockContent)
+          
+          // 如果内容有变化，则只替换这一块
+          if (convertedContent !== blockContent) {
+            const scrollInfo = e.getScrollInfo()
+            
+            e.replaceRange(
+              convertedContent,
+              { line: cursor.line, ch: 0 },
+              { line: endLine + 1, ch: 0 }
+            )
+            
+            // 恢复滚动位置
+            e.scrollTo(scrollInfo.left, scrollInfo.top)
+            return
+          }
         }
       }
+      
       onEditorRefresh()
       store.posts[store.currentPostIndex].content = e.getValue()
     }, 300)
