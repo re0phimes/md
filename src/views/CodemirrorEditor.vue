@@ -221,8 +221,7 @@ function initEditor() {
   editor.value.on(`change`, (e) => {
     clearTimeout(changeTimer.value)
     changeTimer.value = setTimeout(() => {
-      // 获取内容、光标、当前行
-      const content = e.getValue()
+      // 获取光标、当前行
       const cursor = e.getCursor()
       const line = e.getLine(cursor.line) 
       
@@ -281,7 +280,9 @@ function initEditor() {
       e.preventDefault()
       // 转换 admonition 语法并插入
       const convertedText = convertAdmonitionToGFM(text)
-      editor.value.replaceSelection(convertedText)
+      if (editor.value) {
+        editor.value.replaceSelection(convertedText)
+      }
       return
     }
 

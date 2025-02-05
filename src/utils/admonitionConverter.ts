@@ -34,7 +34,7 @@ export function convertAdmonitionToGFM(content: string): string {
   };
 
   // 替换函数
-  return content.replace(admonitionRegex, (match, type, content) => {
+  return content.replace(admonitionRegex, (_match: string, type: string, content: string) => {
     // 获取映射的类型，如果没有映射则默认为 NOTE
     const gfmType = typeMap[type.toLowerCase()] || 'NOTE';
     
@@ -42,7 +42,7 @@ export function convertAdmonitionToGFM(content: string): string {
     const processedContent = content
       .trim()
       .split('\n')
-      .map(line => `> ${line}`)
+      .map((line: string) => `> ${line}`)
       .join('\n');
 
     // 返回 GFM alert 格式
