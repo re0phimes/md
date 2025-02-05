@@ -221,6 +221,18 @@ function initEditor() {
   editor.value.on(`change`, (e) => {
     clearTimeout(changeTimer.value)
     changeTimer.value = setTimeout(() => {
+      // 获取当前编辑器内容
+      const content = e.getValue()
+      // 检查是否包含 admonition 语法
+      if (content.includes('```ad-')) {
+        // 转换 admonition 语法
+        const convertedContent = convertAdmonitionToGFM(content)
+        // 如果内容有变化，则更新编辑器
+        if (convertedContent !== content) {
+          e.setValue(convertedContent)
+          return // 因为 setValue 会再次触发 change 事件，所以这里直接返回
+        }
+      }
       onEditorRefresh()
       store.posts[store.currentPostIndex].content = e.getValue()
     }, 300)
