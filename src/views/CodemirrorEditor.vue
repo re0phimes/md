@@ -9,6 +9,7 @@ import {
 } from '@/utils'
 import fileApi from '@/utils/file'
 import CodeMirror from 'codemirror'
+import { convertAdmonitionToGFM } from '@/utils/admonitionConverter'
 
 const store = useStore()
 const displayStore = useDisplayStore()
@@ -227,7 +228,23 @@ function initEditor() {
 
   // 粘贴上传图片并插入
   editor.value.on(`paste`, (_cm, e) => {
-    if (!(e.clipboardData && e.clipboardData.items) || isImgLoading.value) {
+    if (!(e.clipboardData && e.clipboardData.items)) {
+      return
+    }
+
+    // 处理文本粘贴
+    const text = e.clipboardData.getData('text/plain')
+    if (text && text.includes('```ad-')) {
+      // 阻止默认粘贴行为
+      e.preventDefault()
+      // 转换 admonition 语法并插入
+      const convertedText = convertAdmonitionToGFM(text)
+      editor.value.replaceSelection(convertedText)
+      return
+    }
+
+    // 处理图片粘贴
+    if (isImgLoading.value) {
       return
     }
     for (let i = 0, len = e.clipboardData.items.length; i < len; ++i) {
