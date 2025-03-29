@@ -69,6 +69,90 @@ function buildAddition(): string {
         height: 15px;
         font-weight: 600;
       }
+
+      /* Admonition 样式 */
+      .admonition {
+        margin: 1em 0;
+        padding: 1em;
+        border-radius: 4px;
+        border-left: 4px solid;
+      }
+
+      .admonition-title {
+        font-weight: bold;
+        margin-bottom: 0.5em;
+      }
+
+      .admonition-content {
+        margin: 0;
+      }
+
+      /* 浅色主题下的 admonition 样式 */
+      .admonition.note {
+        background-color: #e8f4f8;
+        border-left-color: #4a9eff;
+      }
+
+      .admonition.warning {
+        background-color: #fff3e0;
+        border-left-color: #ff9800;
+      }
+
+      .admonition.tip {
+        background-color: #e8f5e9;
+        border-left-color: #4caf50;
+      }
+
+      .admonition.important {
+        background-color: #fce4ec;
+        border-left-color: #e91e63;
+      }
+
+      .admonition.caution {
+        background-color: #ffebee;
+        border-left-color: #f44336;
+      }
+
+      /* 深色主题下的 admonition 样式 */
+      .dark .admonition {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: #fff;
+      }
+
+      .dark .admonition.note {
+        background-color: rgba(74, 158, 255, 0.1);
+        border-left-color: #4a9eff;
+      }
+
+      .dark .admonition.warning {
+        background-color: rgba(255, 152, 0, 0.1);
+        border-left-color: #ff9800;
+      }
+
+      .dark .admonition.tip {
+        background-color: rgba(76, 175, 80, 0.1);
+        border-left-color: #4caf50;
+      }
+
+      .dark .admonition.important {
+        background-color: rgba(233, 30, 99, 0.1);
+        border-left-color: #e91e63;
+      }
+
+      .dark .admonition.caution {
+        background-color: rgba(244, 67, 54, 0.1);
+        border-left-color: #f44336;
+      }
+
+      /* 深色主题下的标题文字颜色 */
+      .dark .admonition-title {
+        color: #fff;
+      }
+
+      /* 深色主题下的内容文字颜色 */
+      .dark .admonition-content {
+        color: rgba(255, 255, 255, 0.8);
+      }
     </style>
   `
 }
@@ -234,6 +318,19 @@ export function initRenderer(opts: IOpts) {
         }, 0) as any as number
         return `<pre class="mermaid">${text}</pre>`
       }
+
+      // 处理 Obsidian admonition 语法
+      if (lang.startsWith(`ad-`)) {
+        const type = lang.replace(`ad-`, ``)
+        const content = text.trim()
+        return `
+          <div class="admonition ${type}">
+            <div class="admonition-title">${type.charAt(0).toUpperCase() + type.slice(1)}</div>
+            <div class="admonition-content">${content}</div>
+          </div>
+        `
+      }
+
       const langText = lang.split(` `)[0]
       const language = hljs.getLanguage(langText) ? langText : `plaintext`
       let highlighted = hljs.highlight(text, { language }).value
