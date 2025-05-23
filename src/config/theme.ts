@@ -235,6 +235,21 @@ const defaultTheme: Theme = {
       'line-height': `1.6`,
     },
 
+    // blockquote 内的行内代码样式
+    blockquote_codespan: {
+      'color': `#fff`,
+      'background': `rgba(255,255,255,0.2)`,
+      'padding': `2px 4px`,
+      'border-radius': `3px`,
+      'font-size': `90%`,
+    },
+
+    // blockquote 内的加粗文字样式
+    blockquote_strong: {
+      'color': `#fff`,
+      'font-weight': `bold`,
+    },
+
     // 代码块
     code_pre: {
       'font-size': `90%`,

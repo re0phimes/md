@@ -249,3 +249,18 @@ blockquote_p_question {
     font-style: normal;
     line-height: 1.6;
 }
+
+/* blockquote 内的行内代码样式 */
+blockquote_codespan {
+    color: #fff;                /* 白色文字 */
+    background: rgba(255,255,255,0.2); /* 半透明白色背景 */
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 90%;
+}
+
+/* blockquote 内的加粗文字样式 */
+blockquote_strong {
+    color: #fff;                /* 白色文字，在深色背景中突出 */
+    font-weight: bold;
+}

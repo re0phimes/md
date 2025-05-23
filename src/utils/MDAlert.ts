@@ -51,6 +51,12 @@ export default function markedAlert(options: AlertOptions = {}): MarkedExtension
               ...styles?.blockquote_p,
               ...styles?.[`blockquote_p_${variantType}` as keyof typeof styles],
             },
+            codeStyle: {
+              ...styles?.blockquote_codespan,
+            },
+            strongStyle: {
+              ...styles?.blockquote_strong,
+            },
           },
         })
 
@@ -81,6 +87,9 @@ export default function markedAlert(options: AlertOptions = {}): MarkedExtension
         renderer({ meta, tokens = [] }) {
           let text = this.parser.parse(tokens)
           text = text.replace(/<p .*?>/g, `<p style="${getStyleString(meta.contentStyle)}">`)
+          text = text.replace(/<code .*?>/g, `<code style="${getStyleString(meta.codeStyle)}">`)
+          text = text.replace(/<strong .*?>/g, `<strong style="${getStyleString(meta.strongStyle)}">`)
+
           let tmpl = `<blockquote class="${meta.className} ${meta.className}-${meta.variant}" style="${getStyleString(meta.wrapperStyle)}">\n`
           tmpl += `<p class="${meta.titleClassName}" style="${getStyleString(meta.titleStyle)}">`
           tmpl += meta.icon.replace(
