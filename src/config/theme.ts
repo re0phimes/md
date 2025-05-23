@@ -645,6 +645,10 @@ const simpleTheme = toMerged(defaultTheme, {
     },
 
     blockquote_title_question: {
+      'color': `#FFFFFF`,
+      'font-weight': `bold`,
+      'margin-bottom': `0.5em`,
+      'font-style': `normal`,
     },
 
     blockquote_p_note: {

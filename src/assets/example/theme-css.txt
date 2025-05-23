@@ -225,7 +225,7 @@ blockquote_question {
 }
 /* GFM question 标题 */
 blockquote_title_question {
-    color: #d9822b;             /* 图片中的橙色文字和图标 */
+    color: #FFFFFF;             /* 白色文字，与其他标题保持一致 */
     font-weight: bold;
     margin-bottom: 0.5em;
     font-style: normal;
