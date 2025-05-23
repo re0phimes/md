@@ -32,9 +32,11 @@ image {
 }
 /* 引用样式 */
 blockquote {
+    /* 基础引用块样式 */
 }
 /* 引用段落样式 */
 blockquote_p {
+    /* 基础引用块内段落样式 */
 }
 /* 段落样式 */
 p {
@@ -80,49 +82,170 @@ block_katex {
 }
 /* GFM note 样式 */
 blockquote_note {
+    background-color: #004b87;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 6px;
+    color: #FFFFFF;
+    border-left: none;
 }
 /* GFM tip 样式 */
 blockquote_tip {
+    background-color: #006000;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 6px;
+    color: #FFFFFF;
+    border-left: none;
 }
 /* GFM important 样式 */
 blockquote_important {
+    background-color: #6f42c1;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 6px;
+    color: #FFFFFF;
+    border-left: none;
 }
 /* GFM warning 样式 */
 blockquote_warning {
+    background-color: #7b6634;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 6px;
+    color: #FFFFFF;
+    border-left: none;
 }
 /* GFM caution 样式 */
 blockquote_caution {
+    background-color: #c85959;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 6px;
+    color: #FFFFFF;
+    border-left: none;
 }
 /* GFM 通用标题 */
 blockquote_title {
+    display: flex;              /* 用于对齐可能的图标和标题文字 */
+    align-items: center;
+    gap: 0.5em;                 /* 图标和文字之间的间距 */
 }
 /* GFM note 标题 */
 blockquote_title_note {
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    font-style: normal;
+}
+blockquote_title_note::before {
+    content: 'ℹ️'; /* Unicode info icon */
+    /* 如果上面的图标显示有问题，可以尝试： content: 'i'; font-weight: bold; padding: 0 0.2em; border: 1px solid white; border-radius: 50%; */
 }
 /* GFM tip 标题 */
 blockquote_title_tip {
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    font-style: normal;
+}
+blockquote_title_tip::before {
+    content: '💡'; /* Unicode light bulb icon */
 }
 /* GFM important 标题 */
 blockquote_title_important {
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    font-style: normal;
+}
+blockquote_title_important::before {
+    content: '📌'; /* Unicode pushpin icon */
 }
 /* GFM warning 标题 */
 blockquote_title_warning {
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    font-style: normal;
+}
+blockquote_title_warning::before {
+    content: '⚠️'; /* Unicode warning icon */
+    /* 图片中是一个感叹号，可以尝试： content: '!'; font-weight: bold; */
 }
 /* GFM caution 标题 */
 blockquote_title_caution {
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    font-style: normal;
+}
+blockquote_title_caution::before {
+    content: '🚫'; /* Unicode prohibition icon, 或用 '🛑' */
+    /* 图片中是一个带圆圈的感叹号，可以尝试： content: '!'; font-weight: bold; border: 1px solid white; border-radius: 50%; padding: 0.1em 0.3em; */
 }
 /* GFM note 段落样式 */
 blockquote_p_note {
+    color: #FFFFFF;
+    font-style: normal;
+    line-height: 1.6;
 }
 /* GFM tip 段落样式 */
 blockquote_p_tip {
-}
-/* GFM important 段落样式 */
-blockquote_p_important {
+    color: #FFFFFF;
+    font-style: normal;
+    line-height: 1.6;
 }
 /* GFM warning 段落样式 */
 blockquote_p_warning {
+    color: #FFFFFF;
+    font-style: normal;
+    line-height: 1.6;
 }
 /* GFM caution 段落样式 */
 blockquote_p_caution {
+    color: #FFFFFF;
+    font-style: normal;
+    line-height: 1.6;
+}
+/* GFM important 段落样式 */
+blockquote_p_important {
+    color: #FFFFFF;
+    font-style: normal;
+    line-height: 1.6;
+}
+/* GFM question 样式 */
+blockquote_question {
+    background-color: #b8860b; /* 暗金色背景 */
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 6px;
+    color: #FFFFFF;             /* 默认文字颜色为白色 */
+    border-left: none;          /* 移除继承的左边框 */
+}
+/* GFM question 标题 */
+blockquote_title_question {
+    color: #d9822b;             /* 图片中的橙色文字和图标 */
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    font-style: normal;
+}
+blockquote_title_question::before {
+    content: '❓';              /* Unicode 问号图标 */
+    /* 为了更接近图片中的带圈问号，您可能需要SVG或图标字体。
+       一个简单的CSS尝试（效果可能有限）：
+    content: '?';
+    border: 1.5px solid #d9822b;
+    border-radius: 50%;
+    padding: 0.1em 0.4em;
+    line-height: 1;
+    text-align: center;
+    display: inline-block; // 确保padding和border正确应用
+    */
+}
+/* GFM question 段落样式 */
+blockquote_p_question {
+    color: #FFFFFF;             /* 白色文字 */
+    font-style: normal;
+    line-height: 1.6;
 }

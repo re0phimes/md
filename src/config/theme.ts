@@ -95,24 +95,53 @@ const defaultTheme: Theme = {
     },
 
     blockquote_note: {
+      'background-color': `#004b87`,
+      'padding': `1em`,
+      'margin-bottom': `1em`,
+      'border-radius': `6px`,
+      'color': `#FFFFFF`,
+      'border-left': `none`,
     },
 
     blockquote_tip: {
+      'background-color': `#006000`,
+      'padding': `1em`,
+      'margin-bottom': `1em`,
+      'border-radius': `6px`,
+      'color': `#FFFFFF`,
+      'border-left': `none`,
     },
 
     blockquote_important: {
+      'background-color': `#6f42c1`,
+      'padding': `1em`,
+      'margin-bottom': `1em`,
+      'border-radius': `6px`,
+      'color': `#FFFFFF`,
+      'border-left': `none`,
     },
 
     blockquote_warning: {
+      'background-color': `#7b6634`,
+      'padding': `1em`,
+      'margin-bottom': `1em`,
+      'border-radius': `6px`,
+      'color': `#FFFFFF`,
+      'border-left': `none`,
     },
 
     blockquote_caution: {
-      'font-style': `italic`,
+      'background-color': `#c85959`,
+      'padding': `1em`,
+      'margin-bottom': `1em`,
+      'border-radius': `6px`,
+      'color': `#FFFFFF`,
+      'border-left': `none`,
     },
 
     blockquote_question: {
       'font-style': `italic`,
-      'background-color': `#b97729`,
+      'background-color': `#b8860b`,
       'padding': `1em`,
       'margin-bottom': `1em`,
       'border-radius': `6px`,
@@ -129,23 +158,38 @@ const defaultTheme: Theme = {
     },
 
     blockquote_title_note: {
-      color: `#478be6`,
+      'color': `#FFFFFF`,
+      'font-weight': `bold`,
+      'margin-bottom': `0.5em`,
+      'font-style': `normal`,
     },
 
     blockquote_title_tip: {
-      color: `#57ab5a`,
+      'color': `#FFFFFF`,
+      'font-weight': `bold`,
+      'margin-bottom': `0.5em`,
+      'font-style': `normal`,
     },
 
     blockquote_title_important: {
-      color: `#986ee2`,
+      'color': `#FFFFFF`,
+      'font-weight': `bold`,
+      'margin-bottom': `0.5em`,
+      'font-style': `normal`,
     },
 
     blockquote_title_warning: {
-      color: `#c69026`,
+      'color': `#FFFFFF`,
+      'font-weight': `bold`,
+      'margin-bottom': `0.5em`,
+      'font-style': `normal`,
     },
 
     blockquote_title_caution: {
-      color: `#e5534b`,
+      'color': `#FFFFFF`,
+      'font-weight': `bold`,
+      'margin-bottom': `0.5em`,
+      'font-style': `normal`,
     },
 
     blockquote_title_question: {
@@ -156,18 +200,33 @@ const defaultTheme: Theme = {
     },
 
     blockquote_p_note: {
+      'color': `#FFFFFF`,
+      'font-style': `normal`,
+      'line-height': `1.6`,
     },
 
     blockquote_p_tip: {
+      'color': `#FFFFFF`,
+      'font-style': `normal`,
+      'line-height': `1.6`,
     },
 
     blockquote_p_important: {
+      'color': `#FFFFFF`,
+      'font-style': `normal`,
+      'line-height': `1.6`,
     },
 
     blockquote_p_warning: {
+      'color': `#FFFFFF`,
+      'font-style': `normal`,
+      'line-height': `1.6`,
     },
 
     blockquote_p_caution: {
+      'color': `#FFFFFF`,
+      'font-style': `normal`,
+      'line-height': `1.6`,
     },
 
     blockquote_p_question: {
@@ -543,7 +602,7 @@ const simpleTheme = toMerged(defaultTheme, {
 
     blockquote_question: {
       'font-style': `italic`,
-      'background-color': `#b97729`,
+      'background-color': `#b8860b`,
       'padding': `1em`,
       'margin-bottom': `1em`,
       'border-radius': `6px`,
